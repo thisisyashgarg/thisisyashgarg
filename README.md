@@ -1,7 +1,7 @@
 <h1 align="center">Hello people 👋, I'm Yash Garg</h1>
 <h3 align="center">I Code and Design Stuff 👨🏻‍💻</h3>
 
-- 🔭 I’m currently working on [AirBNB Experience]()
+- 🔭 I’m currently working on [AirBNB Experience]
 
 - 🌱 I’m currently learning **ReactJS**
 
