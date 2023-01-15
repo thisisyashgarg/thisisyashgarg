@@ -1,11 +1,11 @@
 <h1 align="center">Hello people 👋, I'm Yash Garg</h1>
 <h3 align="center">I Code and Design Stuff 👨🏻‍💻</h3>
 
-- 🔭 I’m currently working on AirBNB Experience
+- 🔭 I’m currently working on [AirBNB Experience[(https://github.com/thisisyashgarg/airbnb-clone)
 
 - 🌱 I’m currently learning **ReactJS**
 
-- 👨‍💻 All of my projects are available at [https://github.com/thisisyashgarg](https://github.com/thisisyashgarg)
+- 👨‍💻 All of my projects are available [here](https://github.com/thisisyashgarg)
 
 - 📫 How to reach me **thisisyashgarg@gmail.com**
 
