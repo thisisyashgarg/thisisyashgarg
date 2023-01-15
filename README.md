@@ -5,7 +5,7 @@
 
 - 🌱 I’m currently learning **ReactJS**
 
-- 👨‍💻 All of my projects are available [here](https://github.com/thisisyashgarg)
+- 👨‍💻 All of my projects are available [here](https://github.com/thisisyashgarg?tab=repositories)
 
 - 📫 How to reach me **thisisyashgarg@gmail.com**
 
