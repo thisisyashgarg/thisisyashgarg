@@ -1,6 +1,9 @@
 <h1 align="center">Hello people 👋 I'm Yash Garg</h1>
 <h3 align="center">I Code Stuff 👨🏻‍💻</h3>
 
+
+- 📄 I am a pre-final year undergrad at Maharaja Agrasen Institute of Technology, Delhi, I am pursuing B.Tech in Information Technology.
+
 - 🌱 I’m currently learning **NextJS**
 
 - 👨‍💻 All of my projects are available [here](https://github.com/thisisyashgarg?tab=repositories)
