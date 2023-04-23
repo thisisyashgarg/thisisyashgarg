@@ -2,7 +2,7 @@
 <h3 align="center">I Code Stuff 👨🏻‍💻</h3>
 
 
-- 📄 I am a pre-final year undergrad at Maharaja Agrasen Institute of Technology, Delhi, I am pursuing B.Tech in Information Technology.
+- 📄 I am a pre-final year undergrad at Maharaja Agrasen Institute of Technology, Delhi. I am pursuing B.Tech in Information Technology.
 
 - 🌱 I’m currently learning **NextJS**
 
