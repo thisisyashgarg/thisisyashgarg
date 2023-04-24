@@ -8,7 +8,7 @@
 
 - 👨‍💻 All of my projects are available [here](https://github.com/thisisyashgarg?tab=repositories)
 
-- 📄 All other details are mentioned in my [portfolio website](https://thisisyashgarg.netlify.app/)
+- 📄 All other details are mentioned on my [website](https://thisisyashgarg.netlify.app/)
 
 - 📫 How to reach me **thisisyashgarg@gmail.com**
 
