@@ -4,7 +4,7 @@
 
 - 📄 I am a pre-final year undergrad at Maharaja Agrasen Institute of Technology, Delhi, India. I am pursuing B.Tech in Information Technology.
 
-- 🌱 I’m currently learning **NextJS** and **Langchain**
+- 🌱 I’m currently learning **NextJS**
 
 - 👨‍💻 All of my projects are available [here](https://github.com/thisisyashgarg?tab=repositories)
 
