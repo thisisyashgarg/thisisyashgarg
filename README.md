@@ -6,10 +6,10 @@
 
 - 🌱 I’m currently learning **NextJS**
 
-- 👨‍💻 All of my projects are available [here](https://github.com/thisisyashgarg?tab=repositories)
+- 👨‍💻 All of my projects are listed [here](https://github.com/thisisyashgarg?tab=repositories)
 
 - 📄 All other details are mentioned on my [website](https://thisisyashgarg.netlify.app/)
 
-- 📫 How to reach me **thisisyashgarg@gmail.com**
+- 📫 Reach out to me **thisisyashgarg@gmail.com**
 
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=thisisyashgarg&" alt="thisisyashgarg" /></p>
