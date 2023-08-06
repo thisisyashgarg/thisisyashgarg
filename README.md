@@ -2,9 +2,9 @@
 <h3 align="center">I Code Stuff 👨🏻‍💻</h3>
 
 
-- 📄 I am a pre-final year undergrad at Maharaja Agrasen Institute of Technology, Delhi, India. I am pursuing B.Tech in Information Technology.
+- 📄 I am a final year undergrad at Maharaja Agrasen Institute of Technology, Delhi, India. I am pursuing B.Tech in Information Technology.
 
-- 🌱 I’m currently learning **NextJS**
+- 🌱 I’m currently working with **NextJS**
 
 - 👨‍💻 All of my projects are listed [here](https://github.com/thisisyashgarg?tab=repositories)
 
