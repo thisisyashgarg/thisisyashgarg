@@ -6,8 +6,6 @@
 
 - 🌱 I’m currently working with **NextJS**
 
-- 👨‍💻 All of my projects are listed [here](https://github.com/thisisyashgarg?tab=repositories)
-
 - 📄 All other details are mentioned on my [website](https://thisisyashgarg.netlify.app/)
 
 - 📫 Reach out to me **thisisyashgarg@gmail.com**
