@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const TOKEN = process.env.GH_PAT;
+const TOKEN = process.env.GH_TOKEN;
 const USERNAME = process.env.USERNAME || 'thisisyashgarg';
 
 async function fetchGraphQL(query) {
@@ -110,7 +110,7 @@ async function getAllTimeCommits() {
 
 async function main() {
   if (!TOKEN) {
-    console.error('GH_PAT environment variable is required');
+    console.error('GH_TOKEN environment variable is required');
     process.exit(1);
   }
 
