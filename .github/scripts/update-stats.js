@@ -100,9 +100,9 @@ async function getLanguageStats() {
     .map(([lang, bytes]) => ({ lang, percent: (bytes / total) * 100 }))
     .sort((a, b) => b.percent - a.percent);
 
-  // Take top 7 and group rest as "Other"
-  const top = langPercents.slice(0, 7);
-  const otherPercent = langPercents.slice(7).reduce((sum, l) => sum + l.percent, 0);
+  // Take top 4 and group rest as "Other"
+  const top = langPercents.slice(0, 4);
+  const otherPercent = langPercents.slice(4).reduce((sum, l) => sum + l.percent, 0);
   
   if (otherPercent > 0) {
     top.push({ lang: 'Other', percent: otherPercent });
@@ -168,7 +168,7 @@ async function main() {
   const statsLine = `I joined GitHub **${stats.years} years ago**. Since then I pushed **${format(allTimeCommits)} commits**, received **${format(stats.stars)} stars** across **${format(stats.personalProjects)} personal projects** and contributed to **${format(stats.contributedTo)} public repositories**.`;
   
   // Generate language text line
-  const languageLine = languages.map(l => `**${l.lang}** ${l.percent.toFixed(1)}%`).join(' · ');
+  const languageLine = languages.map(l => `**${l.lang}** (${l.percent.toFixed(1)}%)`).join(' · ');
   
   // Read current README
   let readme = fs.readFileSync('README.md', 'utf8');
