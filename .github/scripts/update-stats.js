@@ -61,6 +61,56 @@ async function getStats() {
   };
 }
 
+async function getLanguageStats() {
+  // Fetch all repos with their languages
+  const query = `
+    query {
+      user(login: "${USERNAME}") {
+        repositories(first: 100, ownerAffiliations: OWNER, isFork: false) {
+          nodes {
+            languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
+              edges {
+                size
+                node {
+                  name
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const data = await fetchGraphQL(query);
+  const repos = data.data.user.repositories.nodes;
+
+  // Aggregate language bytes across all repos
+  const langBytes = {};
+  for (const repo of repos) {
+    for (const edge of repo.languages.edges) {
+      const lang = edge.node.name;
+      langBytes[lang] = (langBytes[lang] || 0) + edge.size;
+    }
+  }
+
+  // Calculate total and percentages
+  const total = Object.values(langBytes).reduce((a, b) => a + b, 0);
+  const langPercents = Object.entries(langBytes)
+    .map(([lang, bytes]) => ({ lang, percent: (bytes / total) * 100 }))
+    .sort((a, b) => b.percent - a.percent);
+
+  // Take top 7 and group rest as "Other"
+  const top = langPercents.slice(0, 7);
+  const otherPercent = langPercents.slice(7).reduce((sum, l) => sum + l.percent, 0);
+  
+  if (otherPercent > 0) {
+    top.push({ lang: 'Other', percent: otherPercent });
+  }
+
+  return top;
+}
+
 async function getAllTimeCommits() {
   // Fetch commits across all years since account creation
   const userQuery = `
@@ -110,21 +160,29 @@ async function main() {
   
   const stats = await getStats();
   const allTimeCommits = await getAllTimeCommits();
+  const languages = await getLanguageStats();
   
   // Format numbers with commas
   const format = (n) => n.toLocaleString('en-US');
   
   const statsLine = `I joined GitHub **${stats.years} years ago**. Since then I pushed **${format(allTimeCommits)} commits**, received **${format(stats.stars)} stars** across **${format(stats.personalProjects)} personal projects** and contributed to **${format(stats.contributedTo)} public repositories**.`;
   
+  // Generate language text line
+  const languageLine = languages.map(l => `**${l.lang}** ${l.percent.toFixed(1)}%`).join(' · ');
+  
   // Read current README
-  const readme = fs.readFileSync('README.md', 'utf8');
+  let readme = fs.readFileSync('README.md', 'utf8');
   
   // Replace the stats line (matches the pattern)
   const statsRegex = /I joined GitHub \*\*\d+ years ago\*\*\. Since then I pushed \*\*[\d,]+ commits\*\*, received \*\*[\d,]+ stars\*\* across \*\*[\d,]+ personal projects\*\* and contributed to \*\*[\d,]+ public repositories\*\*\./;
   
-  const newReadme = readme.replace(statsRegex, statsLine);
+  // Replace the languages line (matches pattern like "**C** 81.6% · **Java** 3.9% ...")
+  const langRegex = /\*\*Most used languages:\*\* .+/;
   
-  fs.writeFileSync('README.md', newReadme);
+  readme = readme.replace(statsRegex, statsLine);
+  readme = readme.replace(langRegex, `**Most used languages:** ${languageLine}`);
+  
+  fs.writeFileSync('README.md', readme);
   
   console.log('README updated with new stats:');
   console.log(`  Years: ${stats.years}`);
@@ -132,6 +190,7 @@ async function main() {
   console.log(`  Stars: ${format(stats.stars)}`);
   console.log(`  Personal Projects: ${format(stats.personalProjects)}`);
   console.log(`  Contributed To: ${format(stats.contributedTo)}`);
+  console.log('  Languages:', languages.map(l => `${l.lang}: ${l.percent.toFixed(1)}%`).join(', '));
 }
 
 main().catch(console.error);
