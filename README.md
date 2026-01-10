@@ -1,2 +1,4 @@
-Hi there. [This](https://thisisyashgarg.github.io/resume.pdf) is my resume. [This](https://thisisyashgarg.com/) is my portfolio. You can reach out to me at [thisisyashgarg@gmail.com](mailto:thisisyashgarg@gmail.com).
-
+Hi there.  
+[This](https://thisisyashgarg.github.io/resume.pdf) is my resume.  
+[This](https://thisisyashgarg.com/) is my portfolio.  
+You can reach out to me at [thisisyashgarg@gmail.com](mailto:thisisyashgarg@gmail.com).
