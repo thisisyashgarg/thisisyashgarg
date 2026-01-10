@@ -30,9 +30,6 @@ async function getStats() {
         pullRequests(first: 1) {
           totalCount
         }
-        issues(first: 1) {
-          totalCount
-        }
         repositories(first: 100, ownerAffiliations: OWNER, isFork: false) {
           totalCount
           nodes {
@@ -61,7 +58,6 @@ async function getStats() {
   return {
     years,
     commits: user.contributionsCollection.totalCommitContributions + user.contributionsCollection.restrictedContributionsCount,
-    issues: user.issues.totalCount,
     pullRequests: user.pullRequests.totalCount,
     stars: totalStars,
     personalProjects: user.repositories.totalCount,
@@ -122,13 +118,13 @@ async function main() {
   // Format numbers with commas
   const format = (n) => n.toLocaleString('en-US');
   
-  const statsLine = `I joined GitHub **${stats.years} years ago**. Since then I pushed **${format(allTimeCommits)} commits**, opened **${format(stats.issues)} issues**, submitted **${format(stats.pullRequests)} pull requests**, received **${format(stats.stars)} stars** across **${format(stats.personalProjects)} personal projects** and contributed to **${format(stats.contributedTo)} public repositories**.`;
+  const statsLine = `I joined GitHub **${stats.years} years ago**. Since then I pushed **${format(allTimeCommits)} commits**, submitted **${format(stats.pullRequests)} pull requests**, received **${format(stats.stars)} stars** across **${format(stats.personalProjects)} personal projects** and contributed to **${format(stats.contributedTo)} public repositories**.`;
   
   // Read current README
   const readme = fs.readFileSync('README.md', 'utf8');
   
   // Replace the stats line (matches the pattern)
-  const statsRegex = /I joined GitHub \*\*\d+ years ago\*\*\. Since then I pushed \*\*[\d,]+ commits\*\*, opened \*\*[\d,]+ issues\*\*, submitted \*\*[\d,]+ pull requests\*\*, received \*\*[\d,]+ stars\*\* across \*\*[\d,]+ personal projects\*\* and contributed to \*\*[\d,]+ public repositories\*\*\./;
+  const statsRegex = /I joined GitHub \*\*\d+ years ago\*\*\. Since then I pushed \*\*[\d,]+ commits\*\*, submitted \*\*[\d,]+ pull requests\*\*, received \*\*[\d,]+ stars\*\* across \*\*[\d,]+ personal projects\*\* and contributed to \*\*[\d,]+ public repositories\*\*\./;
   
   const newReadme = readme.replace(statsRegex, statsLine);
   
@@ -137,7 +133,6 @@ async function main() {
   console.log('README updated with new stats:');
   console.log(`  Years: ${stats.years}`);
   console.log(`  Commits: ${format(allTimeCommits)}`);
-  console.log(`  Issues: ${format(stats.issues)}`);
   console.log(`  PRs: ${format(stats.pullRequests)}`);
   console.log(`  Stars: ${format(stats.stars)}`);
   console.log(`  Personal Projects: ${format(stats.personalProjects)}`);
