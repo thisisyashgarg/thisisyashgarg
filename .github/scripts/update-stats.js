@@ -27,7 +27,7 @@ async function getStats() {
         repositoriesContributedTo(first: 1, contributionTypes: [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY]) {
           totalCount
         }
-        pullRequests(first: 1) {
+        pullRequests(first: 1, states: [OPEN, CLOSED, MERGED]) {
           totalCount
         }
         repositories(first: 100, ownerAffiliations: OWNER, isFork: false) {
@@ -35,6 +35,9 @@ async function getStats() {
           nodes {
             stargazerCount
           }
+        }
+        organizations(first: 1) {
+          totalCount
         }
       }
     }
@@ -62,6 +65,7 @@ async function getStats() {
     stars: totalStars,
     personalProjects: user.repositories.totalCount,
     contributedTo: user.repositoriesContributedTo.totalCount,
+    organizations: user.organizations.totalCount,
   };
 }
 
@@ -118,13 +122,13 @@ async function main() {
   // Format numbers with commas
   const format = (n) => n.toLocaleString('en-US');
   
-  const statsLine = `I joined GitHub **${stats.years} years ago**. Since then I pushed **${format(allTimeCommits)} commits**, submitted **${format(stats.pullRequests)} pull requests**, received **${format(stats.stars)} stars** across **${format(stats.personalProjects)} personal projects** and contributed to **${format(stats.contributedTo)} public repositories**.`;
+  const statsLine = `I joined GitHub **${stats.years} years ago**. Since then I pushed **${format(allTimeCommits)} commits**, submitted **${format(stats.pullRequests)} pull requests**, received **${format(stats.stars)} stars** across **${format(stats.personalProjects)} personal projects**, contributed to **${format(stats.contributedTo)} public repositories** and am part of **${format(stats.organizations)} organizations**.`;
   
   // Read current README
   const readme = fs.readFileSync('README.md', 'utf8');
   
   // Replace the stats line (matches the pattern)
-  const statsRegex = /I joined GitHub \*\*\d+ years ago\*\*\. Since then I pushed \*\*[\d,]+ commits\*\*, submitted \*\*[\d,]+ pull requests\*\*, received \*\*[\d,]+ stars\*\* across \*\*[\d,]+ personal projects\*\* and contributed to \*\*[\d,]+ public repositories\*\*\./;
+  const statsRegex = /I joined GitHub \*\*\d+ years ago\*\*\. Since then I pushed \*\*[\d,]+ commits\*\*, submitted \*\*[\d,]+ pull requests\*\*, received \*\*[\d,]+ stars\*\* across \*\*[\d,]+ personal projects\*\*, contributed to \*\*[\d,]+ public repositories\*\* and am part of \*\*[\d,]+ organizations\*\*\./;
   
   const newReadme = readme.replace(statsRegex, statsLine);
   
@@ -137,6 +141,7 @@ async function main() {
   console.log(`  Stars: ${format(stats.stars)}`);
   console.log(`  Personal Projects: ${format(stats.personalProjects)}`);
   console.log(`  Contributed To: ${format(stats.contributedTo)}`);
+  console.log(`  Organizations: ${format(stats.organizations)}`);
 }
 
 main().catch(console.error);
